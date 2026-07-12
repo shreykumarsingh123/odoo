@@ -10,11 +10,20 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import AutoGraphIcon from '@mui/icons-material/AutoGraph';
 import PersonIcon from '@mui/icons-material/Person';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import BusinessIcon from '@mui/icons-material/Business';
+import Inventory2Icon from '@mui/icons-material/Inventory2';
+import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
+import BookOnlineIcon from '@mui/icons-material/BookOnline';
+import BuildIcon from '@mui/icons-material/Build';
+import GavelIcon from '@mui/icons-material/Gavel';
+import AssessmentIcon from '@mui/icons-material/Assessment';
+import NotificationsIcon from '@mui/icons-material/Notifications';
 import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
 
-export default function Navbar({content}) {
+export default function Navbar({content, isAdmin}) {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -52,17 +61,24 @@ export default function Navbar({content}) {
             </ListItemButton>
           </ListItem>
           <ListItem key={3} disablePadding>
-            <ListItemButton component={Link} to="/organisation-setup">
+            <ListItemButton
+              component={Link}
+              to="/organisation-setup"
+              disabled={!isAdmin}
+            >
               <ListItemIcon>
-                <AutoGraphIcon />
+                <BusinessIcon />
               </ListItemIcon>
-              <ListItemText primary={"Organisation Setup"} />
+              <ListItemText
+                primary={"Organisation Setup"}
+                sx={{ color: !isAdmin ? 'text.disabled' : 'inherit' }}
+              />
             </ListItemButton>
           </ListItem>
           <ListItem key={4} disablePadding>
             <ListItemButton component={Link} to="/assets">
               <ListItemIcon>
-                <AutoGraphIcon />
+                <Inventory2Icon />
               </ListItemIcon>
               <ListItemText primary={"Assets"} />
             </ListItemButton>
@@ -70,7 +86,7 @@ export default function Navbar({content}) {
           <ListItem key={5} disablePadding>
             <ListItemButton component={Link} to="/allocation-transfer">
               <ListItemIcon>
-                <AutoGraphIcon />
+                <SwapHorizIcon />
               </ListItemIcon>
               <ListItemText primary={"Allocation & Transfer"} />
             </ListItemButton>
@@ -78,7 +94,7 @@ export default function Navbar({content}) {
           <ListItem key={6} disablePadding>
             <ListItemButton component={Link} to="/resource-booking">
               <ListItemIcon>
-                <AutoGraphIcon />
+                <BookOnlineIcon />
               </ListItemIcon>
               <ListItemText primary={"Resource Booking"} />
             </ListItemButton>
@@ -86,7 +102,7 @@ export default function Navbar({content}) {
           <ListItem key={7} disablePadding>
             <ListItemButton component={Link} to="/maintenance">
               <ListItemIcon>
-                <AutoGraphIcon />
+                <BuildIcon />
               </ListItemIcon>
               <ListItemText primary={"Maintenance"} />
             </ListItemButton>
@@ -94,7 +110,7 @@ export default function Navbar({content}) {
           <ListItem key={8} disablePadding>
             <ListItemButton component={Link} to="/audit">
               <ListItemIcon>
-                <AutoGraphIcon />
+                <GavelIcon />
               </ListItemIcon>
               <ListItemText primary={"Audit"} />
             </ListItemButton>
@@ -102,7 +118,7 @@ export default function Navbar({content}) {
           <ListItem key={9} disablePadding>
             <ListItemButton component={Link} to="/report">
               <ListItemIcon>
-                <AutoGraphIcon />
+                <AssessmentIcon />
               </ListItemIcon>
               <ListItemText primary={"Report"} />
             </ListItemButton>
@@ -110,7 +126,7 @@ export default function Navbar({content}) {
           <ListItem key={10} disablePadding>
             <ListItemButton component={Link} to="/notification">
               <ListItemIcon>
-                <AutoGraphIcon />
+                <NotificationsIcon />
               </ListItemIcon>
               <ListItemText primary={"Notification"} />
             </ListItemButton>
